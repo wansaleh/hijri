@@ -44,9 +44,9 @@
 </script>
 
 <div class="layout text-center">
-  <div class="grid grid-cols-1 lg:grid-cols-3">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
     {#each events as event}
-      <div class="p-8">
+      <div class="p-8 border-4 border-current rounded-3xl">
         <div
           class="lg:text-2xl relative text-xl leading-normal font-extralight tracking-tighter"
         >
