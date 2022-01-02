@@ -1,4 +1,5 @@
 import cheerio from 'cheerio';
+import { format, parse } from 'date-fns';
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
 export async function get({ params }) {
@@ -24,7 +25,11 @@ export async function get({ params }) {
     if ($(row).hasClass('hevent')) {
       const _row = $(row).find('td');
       events.push({
-        event: _row.eq(0).text().trim(),
+        name: _row.eq(0).text().trim(),
+        date: format(
+          parse(_row.eq(3).text().trim(), 'dd MMMM yyyy', new Date()),
+          'yyyy-MM-dd'
+        ),
         gregorianDate: _row.eq(3).text().trim(),
         hijriDate: _row.eq(1).text().trim(),
         day: _row.eq(2).text().trim(),
