@@ -41,11 +41,6 @@
   let ramadhan = events.find(
     (event: Event) => event.name === 'Start of Fasting Ramadan'
   ) as Event;
-
-  let date = new Date();
-  setInterval(() => {
-    date = new Date();
-  }, 60000);
 </script>
 
 <div class="layout text-center">
