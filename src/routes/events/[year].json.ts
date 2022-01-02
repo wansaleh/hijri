@@ -1,11 +1,12 @@
 import cheerio from 'cheerio';
-import { format, parse } from 'date-fns';
+import { format, isBefore, parse } from 'date-fns';
 import { smartypantsu } from 'smartypants';
 
 const translations = {
-  'Start of Fasting Ramadan': 'Start of Ramadhan',
-  "Wuquf in 'Arafa (Hajj)": "Wuquf in 'Arafa",
+  'Start of Fasting Ramadan': 'Ramadhan',
+  "Wuquf in 'Arafa (Hajj)": 'Day of Wuquf',
   'Days of Tashriq': 'Day of Tashriq',
+  'Islamic New Year': 'Awal Muharram',
   "Fasting 'Ashura": "Day of 'Ashura",
   'Mawlid (Birth) of the Prophet': 'Mawlidur Rasul',
 };
@@ -39,20 +40,22 @@ export async function get({ params }) {
 
   const events = [];
   rows.each((i, row) => {
-    const _row = $(row).find('td');
-    if (
-      $(row).hasClass('hevent') &&
-      _row.eq(0).text().trim() !== 'Laylat al-Qadr'
-    ) {
+    const tr = $(row).find('td');
+    const name = smartypantsu(replaceTranslations(tr.eq(0).text().trim()));
+    const gregorianDate = tr.eq(3).text().trim();
+    const hijriDate = tr.eq(1).text().trim();
+    const day = tr.eq(2).text().trim();
+    const date = parse(gregorianDate, 'dd MMMM yyyy', new Date());
+    const isPassed = isBefore(date, new Date());
+
+    if ($(row).hasClass('hevent') && name !== 'Laylat al-Qadr') {
       events.push({
-        name: smartypantsu(replaceTranslations(_row.eq(0).text().trim())),
-        date: format(
-          parse(_row.eq(3).text().trim(), 'dd MMMM yyyy', new Date()),
-          'yyyy-MM-dd'
-        ),
-        gregorianDate: _row.eq(3).text().trim(),
-        hijriDate: _row.eq(1).text().trim(),
-        day: _row.eq(2).text().trim(),
+        name,
+        date,
+        gregorianDate,
+        hijriDate,
+        day,
+        isPassed,
       });
     }
   });
