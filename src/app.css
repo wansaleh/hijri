@@ -34,6 +34,6 @@ strong {
 
 @layer base {
   .layout {
-    @apply px-6 mx-auto w-full max-w-6xl;
+    @apply px-6 mx-auto w-full max-w-7xl;
   }
 }

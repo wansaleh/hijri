@@ -1,5 +1,22 @@
 import cheerio from 'cheerio';
 import { format, parse } from 'date-fns';
+import { smartypantsu } from 'smartypants';
+
+const translations = {
+  'Start of Fasting Ramadan': 'Start of Ramadhan',
+  "Wuquf in 'Arafa (Hajj)": "Wuquf in 'Arafa",
+  'Days of Tashriq': 'Day of Tashriq',
+  "Fasting 'Ashura": "Day of 'Ashura",
+  'Mawlid (Birth) of the Prophet': 'Mawlidur Rasul',
+};
+
+function replaceTranslations(text: string): string {
+  let output = text;
+  Object.keys(translations).forEach((key) => {
+    output = output.replace(key, translations[key]);
+  });
+  return output;
+}
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
 export async function get({ params }) {
@@ -22,10 +39,13 @@ export async function get({ params }) {
 
   const events = [];
   rows.each((i, row) => {
-    if ($(row).hasClass('hevent')) {
-      const _row = $(row).find('td');
+    const _row = $(row).find('td');
+    if (
+      $(row).hasClass('hevent') &&
+      _row.eq(0).text().trim() !== 'Laylat al-Qadr'
+    ) {
       events.push({
-        name: _row.eq(0).text().trim(),
+        name: smartypantsu(replaceTranslations(_row.eq(0).text().trim())),
         date: format(
           parse(_row.eq(3).text().trim(), 'dd MMMM yyyy', new Date()),
           'yyyy-MM-dd'

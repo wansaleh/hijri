@@ -2,7 +2,7 @@
   "name": "wansaleh-v4-svelte",
   "version": "0.0.1",
   "scripts": {
-    "dev": "svelte-kit dev",
+    "dev": "svelte-kit dev -p 9080",
     "build": "svelte-kit build",
     "package": "svelte-kit package",
     "preview": "svelte-kit preview",
@@ -26,6 +26,7 @@
     "nprogress": "^0.2.0",
     "prettier": "^2.4.1",
     "prettier-plugin-svelte": "^2.4.0",
+    "smartypants": "^0.1.6",
     "svelte": "^3.44.0",
     "svelte-dark-mode": "^2.0.0",
     "svelte-preprocess": "^4.10.1",

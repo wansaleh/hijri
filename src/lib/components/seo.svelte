@@ -4,9 +4,9 @@
   import { colorMode } from '$lib/store';
 
   const defaultMeta = {
-    title: 'SvelteKit Starter',
-    siteName: 'SvelteKit Starter',
-    description: 'SvelteKit Starter With TypeScript & Tailwind.',
+    title: 'Islam Countdown',
+    siteName: 'Islam Countdown',
+    description: 'Islam Countdown With TypeScript & Tailwind.',
     url: 'https://sveltekit-starter-wansaleh.vercel.app',
     image: 'https://sveltekit-starter-wansaleh.vercel.app/og.jpg',
     type: 'website',
@@ -122,8 +122,8 @@
   <title>{meta.title}</title>
   <meta name="robots" content={meta.robots} />
   <meta name="description" content={meta.description} />
-  <meta property="og:url" content={`${meta.url}${$page.path}`} />
-  <link rel="canonical" href={`${meta.url}${$page.path}`} />
+  <meta property="og:url" content={`${meta.url}${$page.url.pathname}`} />
+  <link rel="canonical" href={`${meta.url}${$page.url.pathname}`} />
 
   <meta property="og:type" content={meta.type} />
   <meta property="og:site_name" content={meta.siteName} />
