@@ -4,11 +4,12 @@
   import { colorMode } from '$lib/store';
 
   const defaultMeta = {
-    title: 'Islam Countdown',
-    siteName: 'Islam Countdown',
-    description: 'Islam Countdown With TypeScript & Tailwind.',
-    url: 'https://sveltekit-starter-wansaleh.vercel.app',
-    image: 'https://sveltekit-starter-wansaleh.vercel.app/og.jpg',
+    title: 'Hijri Countdown',
+    siteName: 'Hijri Countdown',
+    description: 'Countdowns for important dates in Hijri calendar.',
+    url: 'https://hijri.wansaleh.com',
+    image:
+      'https://og.wansaleh.com/api/og?siteName=Hijri Countdown&description=Countdowns for important dates in Hijri calendar.',
     type: 'website',
     robots: 'follow, index',
   };
