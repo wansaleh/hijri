@@ -33,7 +33,7 @@
   }));
 </script>
 
-<div class="layout py-20 text-center">
+<div class="layout py-20 px-4 text-center">
   <div class="flex flex-wrap justify-center">
     {#each events as event}
       <EventCard {event} />

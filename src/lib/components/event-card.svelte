@@ -33,15 +33,15 @@
 </script>
 
 <div
-  class="md:w-1/3 lg:w-1/4 p-3 w-1/2 aspect-square {featured &&
+  class="md:w-1/3 lg:w-1/4 lg:p-3 p-2 w-full aspect-square {featured &&
     'md:!w-2/3 lg:!w-1/2 !w-full'}"
 >
   <div
-    class="lg:p-6 flex relative flex-col justify-center p-4 h-full rounded-3xl border-4 border-current {featured &&
+    class="lg:p-6 flex relative flex-col justify-center p-4 h-full rounded-3xl border-4 border-current overflow-hidden {featured &&
       'bg-black text-white dark:bg-white dark:text-black'}"
   >
     <div
-      class="lg:text-xl flex relative justify-center items-center text-lg font-medium tracking-wide {featured &&
+      class="lg:text-xl flex relative justify-center items-center text-lg font-medium tracking-wide leading-none mb-2 {featured &&
         'lg:!text-3xl text-!2xl'}"
     >
       <!-- {#if featured}
@@ -59,7 +59,7 @@
     </div>
 
     <div
-      class="lg:text-sm absolute bottom-0 left-0 w-full text-xs font-semibold leading-none text-center"
+      class="lg:text-xs absolute bottom-0 left-0 w-full text-2xs font-semibold leading-none text-center"
     >
       <span
         class="dark:bg-white dark:text-black inline-block py-1 px-4 pb-0.5 text-white bg-black rounded-tl-xl rounded-tr-xl {featured &&

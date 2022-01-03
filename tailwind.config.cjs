@@ -18,6 +18,9 @@ const config = {
         head: ['Clash Grotesk', ...fontFamily.sans],
       },
       colors: { brand, lightbg, darkbg },
+      fontSize: {
+        '2xs': '0.65rem',
+      },
     },
   },
 };
