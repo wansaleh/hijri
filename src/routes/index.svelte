@@ -32,10 +32,6 @@
     ...event,
     dateObj: parseISO(event.date),
   }));
-
-  let ramadhan = events.find(
-    (event: Event) => event.name === 'Start of Fasting Ramadan'
-  ) as Event;
 </script>
 
 <div class="layout py-20 text-center">
