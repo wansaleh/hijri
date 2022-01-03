@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  @apply bg-lightbg dark:bg-darkbg dark:text-white text-gray-900;
+  @apply bg-lightbg dark:bg-darkbg dark:text-white text-black;
 }
 
 h1 {

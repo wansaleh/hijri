@@ -10,35 +10,64 @@
   }, 30000);
 
   let featured = event.slug === 'ramadhan';
+
+  let daysDiff = differenceInDays(event.dateObj, date);
+
+  const translations = {
+    Rajab: 'Raj',
+    "Sha'ban": 'Shb',
+    Ramadan: 'Ram',
+    Shawwal: 'Shw',
+    'Dhul-Hijjah': 'Dhu-I',
+    Muharram: 'Muh',
+    "Rabi' al-Awwal": 'Rab-I',
+  };
+
+  function replaceTranslations(text: string): string {
+    let output = text;
+    Object.keys(translations).forEach((key) => {
+      output = output.replace(key, translations[key]);
+    });
+    return output;
+  }
 </script>
 
 <div
-  class="sm:w-1/2 md:w-1/3 p-3 w-full aspect-square {featured &&
-    'md:w-2/3 sm:w-full'}"
+  class="sm:w-1/2 md:w-1/4 p-3 w-full aspect-square {featured &&
+    'md:!w-1/2 sm:!w-full'}"
 >
   <div
-    class="md:p-8 flex relative flex-col justify-center p-5 h-full rounded-3xl border-4 border-current"
+    class="md:p-6 flex relative flex-col justify-center p-4 h-full rounded-3xl border-4 border-current {featured &&
+      'bg-black text-white dark:bg-white dark:text-black'}"
   >
     <div
-      class="lg:text-2xl flex relative justify-center items-center text-xl font-semibold {featured &&
-        'lg:text-3xl text-2xl'}"
+      class="lg:text-xl flex relative justify-center items-center text-lg font-medium tracking-wide {featured &&
+        'lg:!text-3xl text-!2xl'}"
     >
-      {#if featured}
+      <!-- {#if featured}
         <div class="pulse inline-block" />
-      {/if}
-      {differenceInDays(event.dateObj, date)} days until
+      {/if} -->
+      {Math.abs(daysDiff)} days
+      {daysDiff > 0 ? 'until' : 'since'}
     </div>
+
     <div
-      class="lg:text-4xl font-head relative text-3xl font-semibold tracking-tight leading-none {featured &&
-        'lg:text-7xl text-5xl'}"
+      class="lg:text-4xl font-head relative text-3xl font-medium tracking-normal !leading-[0.9] {featured &&
+        'lg:text-7xl text-5xl font-semibold'}"
     >
       {event.name}
     </div>
+
     <div
-      class="lg:text-base absolute left-0 bottom-4 w-full text-sm font-extrabold leading-none text-center text-gray-500 {featured &&
-        'lg:text-xl text-lg'}"
+      class="lg:text-sm absolute bottom-0 left-0 w-full text-xs font-semibold leading-none text-center"
     >
-      {format(event.dateObj, 'd MMMM yyyy')}
+      <span
+        class="dark:bg-white dark:text-black inline-block py-1 px-4 pb-0.5 text-white bg-black rounded-tl-xl rounded-tr-xl {featured &&
+          'dark:bg-black dark:text-white text-black bg-white'}"
+        >{format(event.dateObj, 'd MMM yyyy')} &middot; {replaceTranslations(
+          event.hijriDate.replace(/ AH$/, '')
+        )}</span
+      >
     </div>
   </div>
 </div>

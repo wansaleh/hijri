@@ -15,7 +15,7 @@ const config = {
     extend: {
       fontFamily: {
         sans: ['Satoshi', ...fontFamily.sans],
-        head: ['Switzer', ...fontFamily.sans],
+        head: ['Clash Grotesk', ...fontFamily.sans],
       },
       colors: { brand, lightbg, darkbg },
     },
