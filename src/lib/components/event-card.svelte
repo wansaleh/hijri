@@ -33,8 +33,8 @@
 </script>
 
 <div
-  class="md:w-1/3 lg:w-1/4 lg:p-3 p-2 w-full aspect-square {featured &&
-    'md:!w-2/3 lg:!w-1/2 !w-full'}"
+  class="md:w-1/3 lg:w-1/4 lg:p-3 p-2 w-full lg:aspect-square aspect-video {featured &&
+    'md:!w-2/3 lg:!w-1/2 !w-full !aspect-square'}"
 >
   <div
     class="lg:p-6 flex relative flex-col justify-center p-4 h-full rounded-3xl border-4 border-current overflow-hidden {featured &&
