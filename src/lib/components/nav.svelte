@@ -6,7 +6,7 @@
 <div
   class="flex absolute top-0 right-0 left-0 z-50 justify-between items-center p-6"
 >
-  <a
+  <!-- <a
     sveltekit:prefetch
     href="/"
     class="lg:text-base group flex gap-2 items-center text-sm font-semibold leading-tight"
@@ -14,7 +14,7 @@
     <span class="group-hover:text-brand transition duration-300">
       Countdown
     </span>
-  </a>
+  </a> -->
 
   <ul class="lg:gap-2 flex items-center text-sm font-semibold">
     <li>
