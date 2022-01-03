@@ -9,9 +9,8 @@
     date = new Date();
   }, 30000);
 
-  let featured = event.slug === 'ramadhan';
-
-  let daysDiff = differenceInDays(event.dateObj, date);
+  $: featured = event.slug === 'ramadhan';
+  $: daysDiff = differenceInDays(event.dateObj, date);
 
   const translations = {
     Rajab: 'Raj',
