@@ -33,11 +33,11 @@
 </script>
 
 <div
-  class="sm:w-1/2 md:w-1/4 p-3 w-full aspect-square {featured &&
-    'md:!w-1/2 sm:!w-full'}"
+  class="md:w-1/3 lg:w-1/4 p-3 w-1/2 aspect-square {featured &&
+    'md:!w-2/3 lg:!w-1/2 !w-full'}"
 >
   <div
-    class="md:p-6 flex relative flex-col justify-center p-4 h-full rounded-3xl border-4 border-current {featured &&
+    class="lg:p-6 flex relative flex-col justify-center p-4 h-full rounded-3xl border-4 border-current {featured &&
       'bg-black text-white dark:bg-white dark:text-black'}"
   >
     <div
