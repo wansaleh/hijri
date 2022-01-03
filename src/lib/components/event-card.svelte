@@ -62,12 +62,16 @@
       class="lg:text-xs absolute bottom-0 left-0 w-full text-2xs font-semibold leading-none text-center"
     >
       <span
-        class="dark:bg-white dark:text-black inline-block py-1 px-4 pb-0.5 text-white bg-black rounded-tl-xl rounded-tr-xl {featured &&
+        class="dark:bg-white dark:text-black inline-block py-2 px-4 pb-1 text-white bg-black rounded-tl-xl rounded-tr-xl {featured &&
           'dark:bg-black dark:text-white text-black bg-white'}"
-        >{format(event.dateObj, 'd MMM yyyy')} &middot; {replaceTranslations(
-          event.hijriDate.replace(/ AH$/, '')
-        )}</span
       >
+        <span class="block text-[1.5em] mb-1"
+          >{format(event.dateObj, 'EEEE')}</span
+        >
+        {format(event.dateObj, 'd MMM yyyy')} &middot; {replaceTranslations(
+          event.hijriDate.replace(/ AH$/, '')
+        )}
+      </span>
     </div>
   </div>
 </div>
