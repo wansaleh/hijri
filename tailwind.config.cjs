@@ -14,7 +14,8 @@ const config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...fontFamily.sans],
+        sans: ['Satoshi', ...fontFamily.sans],
+        head: ['Switzer', ...fontFamily.sans],
       },
       colors: { brand, lightbg, darkbg },
     },

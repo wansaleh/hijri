@@ -1,5 +1,5 @@
 import cheerio from 'cheerio';
-import { format, isBefore, parse } from 'date-fns';
+import { isBefore, parse } from 'date-fns';
 import { smartypantsu } from 'smartypants';
 
 const translations = {
@@ -11,10 +11,31 @@ const translations = {
   'Mawlid (Birth) of the Prophet': 'Mawlidur Rasul',
 };
 
+const slugs = {
+  "Isra' Mi'raj": 'isramiraj',
+  "Nisfu Sha'ban": 'nisfushaaban',
+  Ramadhan: 'ramadhan',
+  "Nuzul-al Qur'an": 'nuzulquran',
+  'Eid ul-Fitr': 'eidulfitr',
+  'Day of Wuquf': 'wuquf',
+  'Eid ul-Adha': 'eiduladha',
+  'Days of Tashriq': 'tashriq',
+  'Awal Muharram': 'muharram',
+  "Day of 'Ashura": 'ashura',
+  'Mawlidur Rasul': 'mawlid',
+};
+
 function replaceTranslations(text: string): string {
   let output = text;
   Object.keys(translations).forEach((key) => {
     output = output.replace(key, translations[key]);
+  });
+  return output;
+}
+function replaceSlugs(text: string): string {
+  let output = text;
+  Object.keys(slugs).forEach((key) => {
+    output = output.replace(key, slugs[key]);
   });
   return output;
 }
@@ -41,7 +62,9 @@ export async function get({ params }) {
   const events = [];
   rows.each((i, row) => {
     const tr = $(row).find('td');
-    const name = smartypantsu(replaceTranslations(tr.eq(0).text().trim()));
+    const _name = replaceTranslations(tr.eq(0).text().trim());
+    const slug = replaceSlugs(_name);
+    const name = smartypantsu(_name);
     const gregorianDate = tr.eq(3).text().trim();
     const hijriDate = tr.eq(1).text().trim();
     const day = tr.eq(2).text().trim();
@@ -50,6 +73,7 @@ export async function get({ params }) {
 
     if ($(row).hasClass('hevent') && name !== 'Laylat al-Qadr') {
       events.push({
+        slug,
         name,
         date,
         gregorianDate,
