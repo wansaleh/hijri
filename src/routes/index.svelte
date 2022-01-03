@@ -20,7 +20,7 @@
 </script>
 
 <script lang="ts">
-  import { range } from 'lodash';
+  import { range } from 'lodash-es';
   import EventCard from '$lib/components/event-card.svelte';
   import type { HijriEvent } from '$lib/types/dates';
 
