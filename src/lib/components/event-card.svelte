@@ -29,6 +29,8 @@
     });
     return output;
   }
+
+  let hijriYear = event.hijriDate.match(/(\d{4}) AH$/)[1];
 </script>
 
 <div
@@ -55,6 +57,7 @@
         'lg:text-7xl text-5xl font-semibold'}"
     >
       {event.name}
+      {hijriYear}
     </div>
 
     <div
