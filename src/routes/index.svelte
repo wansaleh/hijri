@@ -31,6 +31,7 @@
   import { parseISO } from 'date-fns';
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
+  import Seo from '$lib/components/seo.svelte';
 
   export let _events: HijriEvent[];
   export let hijriYearStart: string;
@@ -50,6 +51,8 @@
   let years = range(51).map((num) => num + 2000);
 </script>
 
+<Seo templateTitle="{currentYear} / {hijriYearStart}&ndash;{hijriYearEnd} AH" />
+
 <div class="layout py-20 px-4 text-center">
   <h1 class="mb-2 font-extrabold leading-none">
     {currentYear}
@@ -64,7 +67,7 @@
     </select>
   </h1>
   <h3 class="mb-10 font-semibold leading-none">
-    {hijriYearStart} &mdash; {hijriYearEnd}
+    {hijriYearStart} &ndash; {hijriYearEnd}
     <a
       href="https://en.wikipedia.org/wiki/Hijri_year"
       rel="external nooopener noreferrer"
