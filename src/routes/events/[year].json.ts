@@ -1,3 +1,6 @@
+// Data scraped from al-habib.info
+
+import redis from '$lib/redis';
 import cheerio from 'cheerio';
 import { isBefore, parse } from 'date-fns';
 import { smartypantsu } from 'smartypants';
@@ -52,6 +55,14 @@ export async function get({ params }) {
     };
   }
 
+  // 1. check redis cache
+  const cache = JSON.parse(await redis.hget('events', year));
+  if (cache) {
+    return {
+      body: { events: cache, cache: 'hit' },
+    };
+  }
+
   const url = `https://www.al-habib.info/islamic-calendar/global/global-islamic-calendar-year-${year}-ce.htm`;
 
   const body = await fetch(url).then((response) => response.text());
@@ -84,7 +95,10 @@ export async function get({ params }) {
     }
   });
 
+  // 2. cache to redis
+  await redis.hset('events', year, JSON.stringify(events));
+
   return {
-    body: { events },
+    body: { events, cache: 'miss' },
   };
 }

@@ -17,7 +17,7 @@
     "Sha'ban": 'Shb',
     Ramadan: 'Ram',
     Shawwal: 'Shw',
-    'Dhul-Hijjah': 'Dhu-I',
+    'Dhul-Hijjah': 'Dhu-H',
     Muharram: 'Muh',
     "Rabi' al-Awwal": 'Rab-I',
   };
@@ -58,18 +58,17 @@
     </div>
 
     <div
-      class="lg:text-xs absolute bottom-0 left-0 w-full text-2xs font-semibold leading-none text-center"
+      class="lg:text-xs text-2xs absolute bottom-0 left-0 w-full font-normal leading-none text-center"
     >
       <span
-        class="dark:bg-white dark:text-black inline-block py-2 px-4 pb-1 text-white bg-black rounded-tl-xl rounded-tr-xl {featured &&
+        class="dark:bg-white dark:text-black inline-block py-2 px-4 pb-1 text-white bg-black rounded-tl-xl rounded-tr-xl leading-[1.2] {featured &&
           'dark:bg-black dark:text-white text-black bg-white'}"
       >
-        <span class="block text-[1.5em] mb-1"
-          >{format(event.dateObj, 'EEEE')}</span
-        >
-        {format(event.dateObj, 'd MMM yyyy')} &middot; {replaceTranslations(
-          event.hijriDate.replace(/ AH$/, '')
-        )}
+        <span class="block font-bold">{format(event.dateObj, 'EEEE')}</span>
+        <span class="block">
+          {replaceTranslations(event.hijriDate.replace(/ AH$/, ''))}
+        </span>
+        <span class="block">{format(event.dateObj, 'd MMM yyyy')}</span>
       </span>
     </div>
   </div>

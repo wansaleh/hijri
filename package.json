@@ -25,6 +25,7 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-svelte3": "^3.2.1",
+    "ioredis": "^4.28.2",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
