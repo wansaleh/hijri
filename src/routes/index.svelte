@@ -19,6 +19,12 @@
 
 <script lang="ts">
   import { range } from 'lodash-es';
+  import {
+    Listbox,
+    ListboxButton,
+    ListboxOptions,
+    ListboxOption,
+  } from '@rgossiaux/svelte-headlessui';
   import EventCard from '$lib/components/event-card.svelte';
   import type { HijriEvent } from '$lib/types/dates';
 
@@ -45,7 +51,18 @@
 </script>
 
 <div class="layout py-20 px-4 text-center">
-  <h1 class="mb-2 font-extrabold leading-none">{currentYear}</h1>
+  <h1 class="mb-2 font-extrabold leading-none">
+    {currentYear}
+    <select
+      value={currentYear}
+      on:change={(e) => goto(`/?year=${e.target.value}`)}
+      class="text-2xl bg-transparent outline-none"
+    >
+      {#each years as year (year)}
+        <option value={year}>{year}</option>
+      {/each}
+    </select>
+  </h1>
   <h3 class="mb-10 font-semibold leading-none">
     {hijriYearStart} &mdash; {hijriYearEnd}
     <a
@@ -63,14 +80,15 @@
     {/each}
   </div>
 
-  <div class="flex flex-wrap justify-center mt-20">
+  <div class="flex flex-wrap justify-center mt-10">
     {#each years as year}
       <button
         on:click={() => {
           goto(`/?year=${year}`);
         }}
-        class="p-1 {year === currentYear && 'text-blue-500'} {year ===
-          new Date().getFullYear() && 'font-bold'}"
+        class="px-2 hover:bg-gray-500/30 rounded-full tracking-tight text-sm
+        {year === currentYear && 'text-blue-500'}
+        {year === new Date().getFullYear() && 'font-bold'}"
       >
         {year}
       </button>
