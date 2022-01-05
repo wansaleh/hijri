@@ -42,12 +42,10 @@
       'bg-black text-white dark:bg-white dark:text-black'}"
   >
     <div
-      class="lg:text-xl flex relative justify-center items-center text-lg font-light tracking-wide leading-none mb-2 {featured &&
-        'lg:!text-3xl text-!2xl'}"
+      class="lg:text-xl flex relative justify-center items-center text-lg font-light tracking-wide leading-none mb-2
+      {!featured && '-mt-10 lg:mt-0'}
+      {featured && 'lg:!text-3xl text-!2xl'}"
     >
-      <!-- {#if featured}
-        <div class="pulse inline-block" />
-      {/if} -->
       {Math.abs(daysDiff)} days
       {daysDiff > 0 ? 'until' : 'since'}
     </div>

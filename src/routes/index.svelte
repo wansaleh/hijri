@@ -27,8 +27,8 @@
   import { page } from '$app/stores';
 
   export let _events: HijriEvent[];
-  export let hijriYearStart;
-  export let hijriYearEnd;
+  export let hijriYearStart: string;
+  export let hijriYearEnd: string;
 
   let events: HijriEvent[];
   $: events = _events.map((event) => ({
@@ -45,8 +45,8 @@
 </script>
 
 <div class="layout py-20 px-4 text-center">
-  <h1 class="mb-4 text-7xl font-bold">{currentYear}</h1>
-  <h2 class="mb-10 font-semibold">
+  <h1 class="mb-2 font-extrabold leading-none">{currentYear}</h1>
+  <h3 class="mb-10 font-semibold leading-none">
     {hijriYearStart} &mdash; {hijriYearEnd}
     <a
       href="https://en.wikipedia.org/wiki/Hijri_year"
@@ -55,7 +55,7 @@
       title="Hijri Year"
       class="cursor-help border-b border-current border-dotted">AH</a
     >
-  </h2>
+  </h3>
 
   <div class="flex flex-wrap justify-center">
     {#each events as event}
