@@ -30,7 +30,7 @@
     return output;
   }
 
-  let hijriYear = event.hijriDate.match(/(\d{4}) AH$/)[1];
+  $: hijriYear = event.hijriDate.match(/(\d{4}) AH$/)[1];
 </script>
 
 <div
@@ -42,7 +42,7 @@
       'bg-black text-white dark:bg-white dark:text-black'}"
   >
     <div
-      class="lg:text-xl flex relative justify-center items-center text-lg font-medium tracking-wide leading-none mb-2 {featured &&
+      class="lg:text-xl flex relative justify-center items-center text-lg font-light tracking-wide leading-none mb-2 {featured &&
         'lg:!text-3xl text-!2xl'}"
     >
       <!-- {#if featured}
@@ -53,8 +53,8 @@
     </div>
 
     <div
-      class="lg:text-4xl font-head relative text-3xl font-medium tracking-normal !leading-[0.9] {featured &&
-        'lg:text-7xl text-5xl font-semibold'}"
+      class="lg:text-3xl font-head relative text-2xl tracking-tight font-semibold !leading-[0.9] {featured &&
+        'lg:!text-5xl !text-4xl font-bold'}"
     >
       {event.name}
       {hijriYear}

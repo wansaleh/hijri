@@ -14,8 +14,8 @@ const config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Satoshi', ...fontFamily.sans],
-        head: ['Clash Grotesk', ...fontFamily.sans],
+        sans: ['Inter var', ...fontFamily.sans],
+        head: ['Inter var', ...fontFamily.sans],
       },
       colors: { brand, lightbg, darkbg },
       fontSize: {

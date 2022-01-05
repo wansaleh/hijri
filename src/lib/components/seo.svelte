@@ -4,12 +4,12 @@
   import { colorMode } from '$lib/store';
 
   const defaultMeta = {
-    title: 'Hijri Countdown',
-    siteName: 'Hijri Countdown',
-    description: 'Countdowns for important dates in Hijri calendar.',
+    title: 'Hijri Holidays',
+    siteName: 'Hijri Holidays',
+    description: 'View important dates in Hijri calendar.',
     url: 'https://hijri.wansaleh.com',
     image:
-      'https://og.wansaleh.com/api/og?siteName=Hijri Countdown&description=Countdowns for important dates in Hijri calendar.',
+      'https://og.wansaleh.com/api/og?siteName=Hijri Holidays&description=Countdowns for important dates in Hijri calendar.',
     type: 'website',
     robots: 'follow, index',
   };
