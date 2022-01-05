@@ -57,7 +57,7 @@ export async function get({ params }) {
 
   // 1. check redis cache
   const cache = JSON.parse(await redis.hget('events', year));
-  if (cache) {
+  if (cache && cache?.length) {
     return {
       body: { events: cache, cache: 'hit' },
     };
