@@ -3,19 +3,15 @@
   export async function load({ fetch, url }) {
     const year = url.searchParams.get('year') || new Date().getFullYear();
     const res = await fetch(`/events/${year}.json`).then((r) => r.json());
-    const yearStart = await fetch(
-      `https://api.aladhan.com/v1/gToH?date=01-01-${year}`
-    ).then((r) => r.json());
-    const yearEnd = await fetch(
-      `https://api.aladhan.com/v1/gToH?date=31-12-${year}`
-    ).then((r) => r.json());
+    const resYears = await fetch(`/hijriyear.json?year=${year}`).then((r) =>
+      r.json()
+    );
 
     return {
       props: {
         _events: res.events,
-        hijriYearStart: yearStart?.data?.hijri.year,
-        hijriYearEnd: yearEnd?.data?.hijri.year,
-        yearEnd,
+        hijriYearStart: resYears.yearStart,
+        hijriYearEnd: resYears.yearEnd,
       },
     };
   }
@@ -31,8 +27,8 @@
   import { page } from '$app/stores';
 
   export let _events: HijriEvent[];
-  export let hijriYearStart: string;
-  export let hijriYearEnd: string;
+  export let hijriYearStart;
+  export let hijriYearEnd;
 
   let events: HijriEvent[];
   $: events = _events.map((event) => ({
