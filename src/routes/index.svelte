@@ -80,7 +80,7 @@
     {/each}
   </div>
 
-  <div class="flex flex-wrap justify-center mt-10">
+  <!-- <div class="flex flex-wrap justify-center mt-10">
     {#each years as year}
       <button
         on:click={() => {
@@ -93,5 +93,5 @@
         {year}
       </button>
     {/each}
-  </div>
+  </div> -->
 </div>

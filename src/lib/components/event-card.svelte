@@ -74,6 +74,7 @@
     </div>
   </div>
 </div>
-{#if featured}
+
+<!-- {#if featured}
   <div class="h-0" style="flex-basis: 100%;" />
-{/if}
+{/if} -->
