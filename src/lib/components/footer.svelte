@@ -10,6 +10,13 @@
       Hadith Ringkas
     </a>
     <a
+      href="https://solat.wansaleh.com"
+      rel="external"
+      class="hover:border-0 border-b-2 border-current"
+    >
+      Waktu Solat
+    </a>
+    <a
       href="https://panduantarawih.com"
       rel="external"
       class="hover:border-0 border-b-2 border-current"
