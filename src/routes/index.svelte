@@ -19,12 +19,6 @@
 
 <script lang="ts">
   import { range } from 'lodash-es';
-  import {
-    Listbox,
-    ListboxButton,
-    ListboxOptions,
-    ListboxOption,
-  } from '@rgossiaux/svelte-headlessui';
   import EventCard from '$lib/components/event-card.svelte';
   import type { HijriEvent } from '$lib/types/dates';
 
@@ -58,7 +52,8 @@
     {currentYear}
     <select
       value={currentYear}
-      on:change={(e) => goto(`/?year=${e.target.value}`)}
+      on:change={(e) =>
+        goto(`/?year=${e.target.value}`, { replaceState: false })}
       class="text-2xl bg-transparent outline-none"
     >
       {#each years as year (year)}
