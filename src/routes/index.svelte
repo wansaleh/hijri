@@ -2,7 +2,7 @@
   /** @type {import('@sveltejs/kit').Load} */
   export async function load({ fetch, url }) {
     const year = url.searchParams.get('year') || new Date().getFullYear();
-    const res = await fetch(`/events/${year}.json`).then((r) => r.json());
+    const res = await fetch(`/events.json?year=${year}`).then((r) => r.json());
     const resYears = await fetch(`/hijriyear.json?year=${year}`).then((r) =>
       r.json()
     );
@@ -37,7 +37,6 @@
     dateObj: parseISO(event.date),
   }));
 
-  let currentYear: number = new Date().getFullYear();
   $: currentYear = Number(
     $page.url.searchParams.get('year') || new Date().getFullYear()
   );
@@ -53,7 +52,7 @@
     <select
       value={currentYear}
       on:change={(e) =>
-        goto(`/?year=${e.target.value}`, { replaceState: false })}
+        goto(`/?year=${e.currentTarget.value}`, { replaceState: false })}
       class="text-2xl bg-transparent outline-none"
     >
       {#each years as year (year)}

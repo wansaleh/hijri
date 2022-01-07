@@ -44,8 +44,8 @@ function replaceSlugs(text: string): string {
 }
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
-export async function get({ params }) {
-  const { year } = params;
+export async function get({ url }) {
+  const year = url.searchParams.get('year');
 
   if (year < 2000 || year > 2100) {
     return {
@@ -63,9 +63,9 @@ export async function get({ params }) {
     };
   }
 
-  const url = `https://www.al-habib.info/islamic-calendar/global/global-islamic-calendar-year-${year}-ce.htm`;
-
-  const body = await fetch(url).then((response) => response.text());
+  const body = await fetch(
+    `https://www.al-habib.info/islamic-calendar/global/global-islamic-calendar-year-${year}-ce.htm`
+  ).then((response) => response.text());
   const $ = cheerio.load(body);
 
   const rows = $('#hijrievents table tbody tr');
